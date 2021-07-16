@@ -1,13 +1,52 @@
+//////////////////////////////////////////////////////////////////////////////////////////
 
-// //*********6/30/21 - 7/1/2021******************
+// //*********7/15//21 - 7/16/2021******************
 // //*********CODEWARS**************/
-//Sudoku Solution Validator
+// tic tac toe validator
 
-valid
-
-
-
-
+function getScore(board){ 
+    let scoreCard = []
+    board.forEach((row,n)=>{
+      row.forEach((play,i)=>{
+        scoreCard.push(`${n+1/*row number*/}${play===0?play:play===1?"x":"o"/* "x" or "o" */}${i+1/**column number*/}`)
+      }
+      )})
+      return scoreCard
+  }
+  function isSolved (board){
+    //winning combos 123 321 111 222 333 
+    const score = getScore(board)
+    if(score===-1){return -1}
+    let joinedScore = score.join('')  
+      if (joinedScore.includes("1x1")&&joinedScore.includes("1x2")&&joinedScore.includes("1x3")){return 1} //row
+      else if (joinedScore.includes("2x1")&&joinedScore.includes("2x2")&&joinedScore.includes("2x3")){return 1} //row
+      else if (joinedScore.includes("3x0")&&joinedScore.includes("3x2")&&joinedScore.includes("3x3")){return 1} //row
+      else if (joinedScore.includes("1x1")&&joinedScore.includes("2x1")&&joinedScore.includes("3x1")){return 1} //column
+      else if (joinedScore.includes("1x2")&&joinedScore.includes("2x2")&&joinedScore.includes("3x2")){return 1} //column
+      else if (joinedScore.includes("1x3")&&joinedScore.includes("2x3")&&joinedScore.includes("3x3")){return 1} //column
+      else if (joinedScore.includes("1x1")&&joinedScore.includes("2x2")&&joinedScore.includes("3x3")){return 1} //diagonal
+      else if (joinedScore.includes("1x3")&&joinedScore.includes("2x2")&&joinedScore.includes("3x1")){return 1} //diagonal
+      else if (joinedScore.includes("1o1")&&joinedScore.includes("1o2")&&joinedScore.includes("1o3")){return 2} //row
+      else if (joinedScore.includes("2o1")&&joinedScore.includes("2o2")&&joinedScore.includes("2o3")){return 2} //row
+      else if (joinedScore.includes("3o1")&&joinedScore.includes("3o2")&&joinedScore.includes("3o3")){return 2} //row
+      else if (joinedScore.includes("1o1")&&joinedScore.includes("2o1")&&joinedScore.includes("3o1")){return 2} //column
+      else if (joinedScore.includes("1o2")&&joinedScore.includes("2o2")&&joinedScore.includes("3o2")){return 2} //column
+      else if (joinedScore.includes("1o3")&&joinedScore.includes("2o3")&&joinedScore.includes("3o3")){return 2} //column
+      else if (joinedScore.includes("1o1")&&joinedScore.includes("2o2")&&joinedScore.includes("3o3")){return 2} //diagonal
+      else if (joinedScore.includes("1o3")&&joinedScore.includes("2o2")&&joinedScore.includes("3o1")){return 2}//diagonal
+      else if (joinedScore.includes(0)){return-1}
+      else{return 0}
+  }
+  
+  
+  let array = [
+    [1, 2, 0],
+    [0, 1, 0],
+    [1, 2, 1],
+  ];
+  console.log(isSolved(array))
+  
+  
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
