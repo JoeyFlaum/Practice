@@ -3,6 +3,7 @@
 // //*********7/15//21 - 7/16/2021******************
 // //*********CODEWARS**************/
 // tic tac toe validator
+//return -1 if game is unfinished, return 0 if cats game, return 1 if x wins, return 2 if o wins
 
 function getScore(board){ 
     let scoreCard = []
